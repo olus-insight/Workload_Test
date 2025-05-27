@@ -3,7 +3,7 @@ title: "WorkAllocation"
 format: html
 ---
 
-Dependencies 
+Dependencies
 
 ```{r,quiet=TRUE}
 
@@ -15,6 +15,7 @@ library(htmlwidgets)
 ```
 
 Create dummy data
+
 ```{r}
 # create dataframe of regions with matter volume by week of 2025 (Jan-May)
 set.seed(123)
@@ -35,6 +36,7 @@ workload_plot <- matter_volume %>%
 ```
 
 Save the plot as an HTML widget
+
 ```{r}
 
 interactive_plot <- workload_plot %>% 
@@ -46,4 +48,3 @@ interactive_plot %>%
   htmlwidgets::saveWidget("workload_plot.html", selfcontained = TRUE)
 
 ```
-
