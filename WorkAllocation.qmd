@@ -5,7 +5,7 @@ format: html
 
 Dependencies 
 
-```{r}
+```{r,quiet=TRUE}
 
 library(tidymodels)
 library(tidyverse)
@@ -30,8 +30,6 @@ workload_plot <- matter_volume %>%
   labs(title = "Matter Volume by Region (2025)", x = "Week", y = "Volume") + 
   facet_wrap(~region,nrow=1)
 
-workload_plot %>% 
-  plotly::ggplotly()
 
 
 ```
@@ -39,8 +37,12 @@ workload_plot %>%
 Save the plot as an HTML widget
 ```{r}
 
-workload_plot %>% 
-  plotly::ggplotly() %>%
+interactive_plot <- workload_plot %>% 
+  plotly::ggplotly() 
+
+interactive_plot
+
+interactive_plot %>% 
   htmlwidgets::saveWidget("workload_plot.html", selfcontained = TRUE)
 
 ```
