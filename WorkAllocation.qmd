@@ -3,15 +3,16 @@ title: "WorkAllocation"
 format: html
 ---
 
-Loading dependencies
+Dependencies 
+
 ```{r}
+
 library(tidymodels)
 library(tidyverse)
-library(htmltools)
+library(plotly)
 library(htmlwidgets)
 
 ```
-
 
 Create dummy data
 ```{r}
@@ -21,8 +22,7 @@ regions <- c("WEMEA", "Asia", "UKI", "Japan")
 matter_volume <- data.frame(
   region = rep(regions, each = 20),
   week = rep(1:20, times = 4),
-  volume = sample(100:500, 80, replace = TRUE)
-)
+  volume = sample(100:500, 80, replace = TRUE))
 
 workload_plot <- matter_volume %>% 
   ggplot(aes(x = week, y = volume, color = region)) +
@@ -30,13 +30,13 @@ workload_plot <- matter_volume %>%
   labs(title = "Matter Volume by Region (2025)", x = "Week", y = "Volume") + 
   facet_wrap(~region,nrow=1)
 
-
 workload_plot %>% 
   plotly::ggplotly()
 
+
 ```
 
-
+Save the plot as an HTML widget
 ```{r}
 
 workload_plot %>% 
